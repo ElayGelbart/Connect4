@@ -8,7 +8,7 @@ body{
   margin-left:auto;
   margin-right:auto;
   display: grid;
-  grid-template-columns: 14% 14% 14% 14% 14% 14% 14%;
+  grid-template-columns:repeat(7, 14.2857142857%)
 }
 .circle{
   background-color: white;

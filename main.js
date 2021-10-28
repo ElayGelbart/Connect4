@@ -24,133 +24,172 @@ const addColor = (i) => {
     circles[i].classList.add("red");
     turn = 1;
     if (checkWin(i, 'red')) {
-      console.log('win');
+      alert('win');
     }
   }
   else {
     circles[i].classList.add("yellow")
     turn = 0;
     if (checkWin(i, 'yellow')) {
-      console.log('win');
+      alert('win');
     };
   }
 }
+
 const checkWin = (i, color) => {
-  function checkLeft() {
-    try {
-      if (circles[i - 1].classList.contains(color) && (i - 1) % 7 != 0 && (i - 1) % 6 != 0) {
-        if (circles[i - 2].classList.contains(color) && (i - 2) % 7 != 0 && (i - 2) % 6 != 0) {
-          if (circles[i - 3].classList.contains(color)) {
-            return true;
+
+  const checkVertical = () => {
+    let counter = 1;
+    for (let j = 1; j < 4; j++) {
+      try {
+        if (circles[i + j].classList.contains(color)) {
+          counter++;
+          if (j == 1 || j == 2) {
+            if ((i + j) % 7 == 0 || (i + j) % 6 == 0) {
+              break;
+            }
           }
+          continue;
         }
+      } catch (error) {
+        break;
       }
-      return false;
-    } catch (error) {
-      return false;
+      break;
+    }
+    for (let j = 1; j < 4; j++) {
+      try {
+        if (circles[i - j].classList.contains(color)) {
+          counter++;
+          if (j == 1 || j == 2) {
+            if ((i - j) % 7 == 0 || (i - j) % 6 == 0) {
+              break;
+            }
+          }
+          continue;
+        }
+      } catch (error) {
+        break;
+      }
+      break;
+    }
+    if (counter == 4) {
+      return true;
+    }
+    return false;
+  }
+
+  const checkHorizontal = () => {
+    let counter = 1;
+    for (let j = 7; j < 22; j = j + 7) {
+      try {
+        if (circles[i + j].classList.contains(color)) {
+          counter++;
+          continue;
+        }
+      } catch (error) {
+        break;
+      }
+      break;
+    }
+    for (let j = 7; j < 22; j = j + 7) {
+      try {
+        if (circles[i - j].classList.contains(color)) {
+          counter++;
+          continue;
+        }
+      } catch (error) {
+        break;
+      }
+      break;
+    }
+    if (counter == 4) {
+      return true;
+    }
+    return false;
+  }
+  const checkDiagnal = () => {
+    let counter = 1;
+
+    for (let j = 6; j < 19; j = j + 6) {
+      try {
+        if (circles[i + j].classList.contains(color)) {
+          counter++;
+          if (j != 18) {
+            if ((i + j) % 7 == 0 || (i + j) % 6 == 0) {
+              break;
+            }
+          }
+          continue;
+        }
+      } catch (error) {
+        break;
+      }
+      break;
     }
 
-  }
-  function checkRight() {
-    try {
-      if (circles[i + 1].classList.contains(color) && (i + 1) % 7 != 0 && (i + 1) % 6 != 0) {
-        if (circles[i + 2].classList.contains(color) && (i + 2) % 7 != 0 && (i + 2) % 6 != 0) {
-          if (circles[i + 3].classList.contains(color)) {
-            return true;
+    for (let j = 6; j < 19; j = j + 6) {
+      try {
+        if (circles[i - j].classList.contains(color)) {
+          counter++;
+          if (j != 18) {
+            if ((i - j) % 7 == 0 || (i - j) % 6 == 0) {
+              break;
+            }
           }
+          continue;
         }
+      } catch (error) {
+        break;
       }
-      return false;
-    } catch (error) {
-      return false;
+      break;
     }
-  }
-  function checkUp() {
-    try {
-      if (circles[i - 7].classList.contains(color)) {
-        if (circles[i - 14].classList.contains(color)) {
-          if (circles[i - 21].classList.contains(color)) {
-            return true;
+    if (counter == 4) {
+      return true;
+    }
+
+    counter = 1;
+    for (let j = 8; j < 25; j = j + 8) {
+      try {
+        if (circles[i + j].classList.contains(color)) {
+          counter++;
+          if (j != 24) {
+            if ((i + j) % 7 == 0 || (i + j) % 6 == 0) {
+              break;
+            }
           }
+          continue;
         }
+      } catch (error) {
+        break;
       }
-      return false;
-    } catch (error) {
-      return false;
+      break;
     }
-  }
-  function checkDown() {
-    try {
-      if (circles[i + 7].classList.contains(color)) {
-        if (circles[i + 14].classList.contains(color)) {
-          if (circles[i + 21].classList.contains(color)) {
-            return true;
+
+    for (let j = 8; j < 25; j = j + 8) {
+      try {
+        if (circles[i - j].classList.contains(color)) {
+          counter++;
+          if (j != 24) {
+            if ((i - j) % 7 == 0 || (i - j) % 6 == 0) {
+              break;
+            }
           }
+          continue;
         }
+      } catch (error) {
+        break;
       }
-      return false;
-    } catch (error) {
-      return false;
+      break;
     }
-  }
-  function checkDiagdownleft() {
-    try {
-      if (circles[i - 6].classList.contains(color) && (i - 6) % 7 != 0 && (i - 6) % 6 != 0) {
-        if (circles[i - 12].classList.contains(color) && (i - 12) % 7 != 0 && (i - 12) % 6 != 0) {
-          if (circles[i - 18].classList.contains(color)) {
-            return true;
-          }
-        }
-      }
-      return false;
-    } catch (error) {
-      return false;
+
+    if (counter == 4) {
+      return true;
     }
+    return false;
   }
-  function checkDiagupright() {
-    try {
-      if (circles[i + 6].classList.contains(color) && (i + 6) % 7 != 0 && (i + 6) % 6 != 0) {
-        if (circles[i + 12].classList.contains(color) && (i + 12) % 7 != 0 && (i + 12) % 6 != 0) {
-          if (circles[i + 18].classList.contains(color)) {
-            return true;
-          }
-        }
-      }
-      return false;
-    } catch (error) {
-      return false;
-    }
-  }
-  function checkDiagdownright() {
-    try {
-      if (circles[i - 8].classList.contains(color) && (i - 8) % 7 != 0 && (i - 8) % 6 != 0) {
-        if (circles[i - 16].classList.contains(color) && (i - 16) % 7 != 0 && (i - 16) % 6 != 0) {
-          if (circles[i - 24].classList.contains(color)) {
-            return true;
-          }
-        }
-      }
-      return false;
-    } catch (error) {
-      return false;
-    }
-  }
-  function checkDiagupleft() {
-    try {
-      if (circles[i + 8].classList.contains(color) && (i + 8) % 7 != 0 && (i + 8) % 6 != 0) {
-        if (circles[i + 16].classList.contains(color) && (i + 16) % 7 != 0 && (i + 16) % 6 != 0) {
-          if (circles[i + 24].classList.contains(color)) {
-            return true;
-          }
-        }
-      }
-      return false;
-    } catch (error) {
-      return false;
-    }
-  }
-  if (checkUp() || checkDown() || checkLeft() || checkRight() || checkDiagdownleft() || checkDiagupright() || checkDiagupleft() || checkDiagdownright()) {
-    return true
+
+  if (checkVertical() || checkHorizontal() || checkDiagnal()) {
+    return true;
   }
   return false;
 }
