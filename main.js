@@ -1,29 +1,40 @@
 'use strict'
 let turn = 0;
 let circles = document.getElementsByClassName("circle");
-for (let i = 0; i < circles.length; i++) {
-  circles[i].addEventListener("click", () => {
-    if (!circles[i].classList.contains('red') && !circles[i].classList.contains('yellow')) {
-      if (turn === 0) {
-        circles[i].classList.add("red");
-        turn = 1;
-        if (checkWin(i, 'red')) {
-          console.log('win');
-        }
+
+const addCircle = (startNum) => {
+  let notTaken = true;
+  let i = startNum;
+  try {
+    while (notTaken) {
+      if (!circles[i].classList.contains('red') && !circles[i].classList.contains('yellow')) {
+        addColor(i);
+        notTaken = false;
+      } else {
+        i = i - 7;
       }
-      else {
-        circles[i].classList.add("yellow")
-        turn = 0;
-        if (checkWin(i, 'yellow')) {
-          console.log('win');
-        };
-      }
-    } else {
-      alert('Pick Another Sqare')
     }
-  });
+  } catch (error) {
+    alert('pick other line');
+  }
 }
 
+const addColor = (i) => {
+  if (turn === 0) {
+    circles[i].classList.add("red");
+    turn = 1;
+    if (checkWin(i, 'red')) {
+      console.log('win');
+    }
+  }
+  else {
+    circles[i].classList.add("yellow")
+    turn = 0;
+    if (checkWin(i, 'yellow')) {
+      console.log('win');
+    };
+  }
+}
 const checkWin = (i, color) => {
   function checkLeft() {
     try {
