@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style.css">
-  <script src="./main.js" defer></script>
+  <script src="./class.js" type="module" defer></script>
   <title>Connect 4</title>
 </head>
 
@@ -14,27 +14,15 @@
   <h1>Connect 4 Challenge</h1>
   <main>
     <div id="theGame">
-      <span class="circle"></span> <span class="circle"></span> <span class="circle"></span> <span
-        class="circle"></span> <span class="circle"></span> <span class="circle"></span> <span class="circle"></span>
-      <span class="circle"></span> <span class="circle"></span> <span class="circle"></span> <span
-        class="circle"></span> <span class="circle"></span> <span class="circle"></span> <span class="circle"></span>
-      <span class="circle"></span> <span class="circle"></span> <span class="circle"></span> <span
-        class="circle"></span> <span class="circle"></span> <span class="circle"></span> <span class="circle"></span>
-      <span class="circle"></span> <span class="circle"></span> <span class="circle"></span> <span
-        class="circle"></span> <span class="circle"></span> <span class="circle"></span> <span class="circle"></span>
-      <span class="circle"></span> <span class="circle"></span> <span class="circle"></span> <span
-        class="circle"></span> <span class="circle"></span> <span class="circle"></span> <span class="circle"></span>
-      <span class="circle"></span> <span class="circle"></span> <span class="circle"></span> <span
-        class="circle"></span> <span class="circle"></span> <span class="circle"></span> <span class="circle"></span>
-      <span class="circle"></span> <span class="circle"></span> <span class="circle"></span> <span
-        class="circle"></span> <span class="circle"></span> <span class="circle"></span> <span class="circle"></span>
-      <button class="addCircleBtn" onclick="addCircle(42)">Click</button>
-      <button class="addCircleBtn" onclick="addCircle(43)">Click</button>
-      <button class="addCircleBtn" onclick="addCircle(44)">Click</button>
-      <button class="addCircleBtn" onclick="addCircle(45)">Click</button>
-      <button class="addCircleBtn" onclick="addCircle(46)">Click</button>
-      <button class="addCircleBtn" onclick="addCircle(47)">Click</button>
-      <button class="addCircleBtn" onclick="addCircle(48)">Click</button>
+    </div>
+    <div>
+      <button class="addCircleBtn" onclick="app.getNumToModel(42)">Click</button>
+      <button class="addCircleBtn" onclick="app.getNumToModel(43)">Click</button>
+      <button class="addCircleBtn" onclick="app.getNumToModel(44)">Click</button>
+      <button class="addCircleBtn" onclick="app.getNumToModel(45)">Click</button>
+      <button class="addCircleBtn" onclick="app.getNumToModel(46)">Click</button>
+      <button class="addCircleBtn" onclick="app.getNumToModel(47)">Click</button>
+      <button class="addCircleBtn" onclick="app.getNumToModel(48)">Click</button>
     </div>
   </main>
 </body>
