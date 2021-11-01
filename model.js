@@ -18,8 +18,11 @@ class Connect4 {
     this.updateCellEvent.trigger({ move, player: this.currentPlayer });
 
     this.finished = this.checkWin(move, this.currentPlayer) || this.draw();
-
+    
     if (!this.finished) { this.switchPlayer(); }
+    else{
+      alert(`${this.currentPlayer} won!`)
+    }
 
     return true;
   }
